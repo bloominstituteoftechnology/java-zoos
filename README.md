@@ -1,10 +1,15 @@
 # java-zoos
 
-# Introduction
+A student that completes this project shows that they can:
+* Use Custom Queries usng Spring-Data
+* Connect to PostgreSQL Using Spring-Data
+* Implement Many-to-many and One-to-many relations
+
+## Introduction
 
 This is a basic database scheme with zoos, phone number and animals at the zoo.
 
-#Instructions
+## Instructions
 
 Create a REST API server to store and read data from a PostgreSQL database. A suggestion - work in H2 first, get everything working and then covert to PostgreSQL. The table layouts should be
 
@@ -19,6 +24,8 @@ Create a REST API server to store and read data from a PostgreSQL database. A su
   * zooid - foreign key
   
 There is a one to many relationship between zoos and telephones. One zoo can have multiple phone numbers but each phone number can only belong to one zoo.
+
+Use the file data.sql to seed your database.
 
 * Animal
   * animalid - long primary key
@@ -44,7 +51,8 @@ For the PUT and POST you can assume you are sent all the data with the appropria
 
 * DELETE /admin/zoos/{id} - delete the zoo, associated phone numbers, and zoo animals combination associated with this zoo id
 
-Stretch Goals
+### Stretch Goals
+
 * Expose the end point DELETE /admin/zoos/{zooid}/animals/{animalid} - delete the zoo animal combination based off of ids. 
   * Hint: @PathVariable("zooid", long zooid), @PathVariable("animalid") long animalid
 * Expose the end point POST /admin/zoos/{zooid}/animals/{animalid} - adds the zoo animal combination based off of ids. 
