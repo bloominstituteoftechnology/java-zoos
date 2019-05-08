@@ -7,8 +7,8 @@ INSERT INTO zoo (zooid, zooname)
          
 INSERT INTO telephone(phoneid, phonetype, phonenumber, zooid)
          VALUES (1, "main", "555-555-5555", 1),
-                (2, "education, "555-555-1234", 1),
-                (3, "membership, "555-555-4321", 1),
+                (2, "education", "555-555-1234", 1),
+                (3, "membership", "555-555-4321", 1),
                 (4, "main", "123-555-5555", 4)
                 (5, "main", "555-123-5555", 3);
          
