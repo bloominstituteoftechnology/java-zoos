@@ -37,6 +37,8 @@ Expose the following end points
 
 * GET /zoos/zoos - returns all zoos with their phone numbers and animals
 * GET /zoos/{name} - return the zoo with this name with its phone numbers and animals
+  * Hint: Remember in the web world, a space is a %20 so to search for Point Defiance Zoo, replace the spaces with %20:
+  * localhost:2019/zoos/Point%20Defiance%20Zoo
 
 * GET /animals/animals - returns all animals with their zoos
 * GET /animals/{name} - return the animal with a list of zoos where they can be found
