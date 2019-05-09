@@ -48,10 +48,14 @@ Expose the following end points
 For the PUT and POST you can assume you are sent all the data with the appropriate ids included
 
 * PUT /admin/zoos/{id} - update the zoo referenced by the id number with the provided information
+  * Update the Zoo and associated phone number. This does NOT address the Zoo Animal combinations! That would be a separate end point
 
 * POST /admin/zoos - add the zoo
+  * Add the Zoo and associated phone number(s). This does NOT address the Zoo Animal combinations! That would be a separate end point.
 
 * DELETE /admin/zoos/{id} - delete the zoo, associated phone numbers, and zoo animals combination associated with this zoo id
+  * This should delete the Zoo, associated telephone numbers, and zoo animals combinations associated with this zoo.
+  
 
 ### Stretch Goals
 
