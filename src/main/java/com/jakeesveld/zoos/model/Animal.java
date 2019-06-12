@@ -1,5 +1,7 @@
 package com.jakeesveld.zoos.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +16,7 @@ public class Animal {
     private String animaltype;
 
     @ManyToMany(mappedBy = "animalList")
+    @JsonIgnoreProperties("animalList")
     private List<Zoo> zoos = new ArrayList<>();
 
     public Animal() {

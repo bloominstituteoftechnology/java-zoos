@@ -60,4 +60,11 @@ public class ZooServiceImpl implements ZooService {
             throw new EntityNotFoundException("Unable to find zoo with id: " + id);
         }
     }
+
+    @Override
+    public ArrayList<Zoo> findAll() {
+        ArrayList<Zoo> zooList = new ArrayList<>();
+        repo.findAll().iterator().forEachRemaining(zooList::add);
+        return zooList;
+    }
 }

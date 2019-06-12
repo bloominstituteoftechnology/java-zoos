@@ -11,4 +11,5 @@ public interface ZooService {
     void updateZoo(long id, Zoo updatedZoo);
     void addZoo(Zoo zoo);
     void deleteZoo(long id);
+    ArrayList<Zoo> findAll();
 }
