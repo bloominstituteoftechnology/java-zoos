@@ -9,6 +9,6 @@ import java.util.ArrayList;
 
 public interface AnimalRepository extends CrudRepository<Animal, Long> {
 
-    @Query(value = "SELECT a.animalname COUNT(z.zooid) as countzoos FROM animal a INNER JOIN zooanimals z ON a.animalid=z.animalid GROUP BY a.animalname", nativeQuery = true)
+    @Query(value = "SELECT a.animaltype, COUNT(z.zooid) as countzoos FROM animal a INNER JOIN zooanimals z ON a.animalid=z.animalid GROUP BY a.animalid, a.animaltype", nativeQuery = true)
     ArrayList<AnimalCount> getAnimalCounts();
 }

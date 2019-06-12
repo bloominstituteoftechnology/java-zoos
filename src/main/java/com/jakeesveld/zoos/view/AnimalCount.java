@@ -1,6 +1,6 @@
 package com.jakeesveld.zoos.view;
 
 public interface AnimalCount {
-    String getAnimalname();
+    String getAnimaltype();
     int getCountzoos();
 }
