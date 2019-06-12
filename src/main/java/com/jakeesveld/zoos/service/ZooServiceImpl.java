@@ -6,10 +6,13 @@ import com.jakeesveld.zoos.model.Zoo;
 import com.jakeesveld.zoos.repo.ZooRepository;
 import com.jakeesveld.zoos.view.ZooDetails;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 
+@Service
 public class ZooServiceImpl implements ZooService {
 
     @Autowired
@@ -46,6 +49,7 @@ public class ZooServiceImpl implements ZooService {
         repo.save(zoo);
     }
 
+    @Transactional
     @Override
     public void deleteZoo(long id) {
         if (repo.findById(id).isPresent()) {
