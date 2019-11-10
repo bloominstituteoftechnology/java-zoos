@@ -36,25 +36,13 @@ The data.sql file seeds the Zoo Database.
 
 * GET /zoos/zoos - returns all zoos with their phone numbers and animals
 
-* PUT /admin/zoos/{id} - update the zoo referenced by the id number with the provided information
-  * Update the Zoo and associated phone number. This does NOT address the Zoo Animal combinations! That would be a separate endpoint
-  * You could use to test (use id 2):
-  
-```
-{
-   "zooname": "SanDiegoZoo",
-   "telephones": [
-      {
-          "phonetype": "education",
-          "phonenumber": "555-777-777"
-      }
-   ]
-} 
-```
+* GET /zoos/zoo/{id} - returns all information related to a zoo based on its id
 
-* POST /admin/zoos - add the zoo
+* GET /zoos/zoo/namelike/{name} - returns a list of all the zoos with their information who have the given substring in their name
+
+* POST /zoos/zoo - add a zoo
   * Add the Zoo and associated phone number(s). This does NOT address the Zoo Animal combinations! That would be a separate end point.
-  * In the header return as the location of the newly created zoo POST /admin/zoos/{id}
+  * In the header return as the location of the newly created zoo POST /zoos/zoo/{id}
   * You could use to test:
 ```
 {
@@ -72,22 +60,33 @@ The data.sql file seeds the Zoo Database.
 }
 ```
 
-* DELETE /admin/zoos/{id} - delete the zoo, associated phone numbers, and zoo animals combination associated with this zoo id
+* PUT /zoos/zoo/{id} - update the zoo referenced by the id number with the provided information
+  * Update the Zoo and associated phone number. This does NOT address the Zoo Animal combinations! That would be a separate endpoint
+  * You could use to test (use id 2):
+  
+```
+{
+   "zooname": "SanDiegoZoo",
+   "telephones": [
+      {
+          "phonetype": "education",
+          "phonenumber": "555-777-777"
+      }
+   ]
+} 
+```
+
+* DELETE /zoos/zoo/{id} - delete the zoo, associated phone numbers, and zoo animals combination associated with this zoo id
   * This should delete the Zoo, associated telephone numbers, and zoo animals combinations associated with this zoo.
 
-
 * GET /animals/count -  that returns a JSON object list listing the animals and a count of how many zoos where they can be found. Use a custom query for this. 
-
-* GET /zoos/zoos/{id} - returns all information related to a zoo based on its id
-
-* GET /zoos/{name} - returns all information related to a zoo based on its full name
 
 
 ### Stretch Goals
 
-* Expose the endpoint DELETE /admin/zoos/{zooid}/animals/{animalid} - delete the zoo animal combination based off of ids. 
+* Expose the endpoint DELETE /zoo/zoo/{zooid}/animals/{animalid} - delete the zoo animal combination based off of ids. 
   * Hint: @PathVariable("zooid") long zooid, @PathVariable("animalid") long animalid
 
-* Expose the endpoint POST /admin/zoos/{zooid}/animals/{animalid} - adds the zoo animal combination based off of ids. 
+* Expose the endpoint POST /zoos/zoo/{zooid}/animals/{animalid} - adds the zoo animal combination based off of ids. 
   * Hint: @PathVariable("zooid") long zooid, @PathVariable("animalid") long animalid
 
