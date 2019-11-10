@@ -82,11 +82,9 @@ The data.sql file seeds the Zoo Database.
 * GET /animals/count -  that returns a JSON object list listing the animals and a count of how many zoos where they can be found. Use a custom query for this. 
 
 
-### Stretch Goals
-
-* Expose the endpoint DELETE /zoo/zoo/{zooid}/animals/{animalid} - delete the zoo animal combination based off of ids. 
+* DELETE /zoo/zoo/{zooid}/animals/{animalid} - delete the zoo animal combination based off of ids. 
   * Hint: @PathVariable("zooid") long zooid, @PathVariable("animalid") long animalid
 
-* Expose the endpoint POST /zoos/zoo/{zooid}/animals/{animalid} - adds the zoo animal combination based off of ids. 
+* POST /zoos/zoo/{zooid}/animals/{animalid} - adds the zoo animal combination based off of ids. 
   * Hint: @PathVariable("zooid") long zooid, @PathVariable("animalid") long animalid
 
