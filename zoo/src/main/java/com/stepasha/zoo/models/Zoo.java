@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "zoos")
+@Table(name = "zoo")
 public class Zoo {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,6 +23,12 @@ public class Zoo {
     @JsonIgnoreProperties("zoo")
     private List<Telephone> telephones = new ArrayList<>();
 
+    @ManyToMany
+    @JoinTable(name = "zooanimals",
+            joinColumns = {@JoinColumn(name = "zooid")},
+            inverseJoinColumns = {@JoinColumn(name = "animalid")})
+    @JsonIgnoreProperties("zoos")
+    private List<Animal> animals = new ArrayList<>();
     public Zoo(){}
 
     public Zoo(String zooname, List<Telephone> telephones) {
@@ -52,5 +58,13 @@ public class Zoo {
 
     public void setTelephones(List<Telephone> telephones) {
         this.telephones = telephones;
+    }
+
+    public List<Animal> getAnimals() {
+        return animals;
+    }
+
+    public void setAnimals(List<Animal> animals) {
+        this.animals = animals;
     }
 }
