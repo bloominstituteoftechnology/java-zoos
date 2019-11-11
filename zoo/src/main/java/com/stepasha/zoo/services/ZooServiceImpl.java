@@ -40,10 +40,10 @@ public class ZooServiceImpl implements ZooService{
         }
         return zoo;
     }
+    @Transactional
     @Override
     public void deleteZoo(long id)     {
-        zoorepo.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Zoo id " + id + " not found!"));
+        zoorepo.findById(id);
         zoorepo.deleteById(id);
     }
 @Transactional
