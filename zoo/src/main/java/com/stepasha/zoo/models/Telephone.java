@@ -20,14 +20,14 @@ public class Telephone {
     @JoinColumn(name = "zooid",
     nullable = false)
     @JsonIgnoreProperties("phoneid")
-    private Zoo zooid;
+    private Zoo zoo; //this is how you make a foreign key
 
     public Telephone(){}
 
-    public Telephone(String phonetype, String phonenumber, Zoo zooid) {
+    public Telephone(String phonetype, String phonenumber, Zoo zoo) {
         this.phonetype = phonetype;
         this.phonenumber = phonenumber;
-        this.zooid = zooid;
+        this.zoo =zoo;
     }
 
     public long getPhoneid() {
@@ -54,11 +54,11 @@ public class Telephone {
         this.phonenumber = phonenumber;
     }
 
-    public Zoo getZooid() {
-        return zooid;
+    public Zoo getZoo() {
+        return zoo;
     }
 
-    public void setZooid(Zoo zooid) {
-        this.zooid = zooid;
+    public void setZoo(Zoo zoo) {
+        this.zoo = zoo;
     }
 }
