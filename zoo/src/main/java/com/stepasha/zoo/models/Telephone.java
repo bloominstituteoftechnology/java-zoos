@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "telephone",
 uniqueConstraints = {@UniqueConstraint(columnNames =  {"zooid", "phoneid"})})
-public class Telephone {
+public class Telephone extends Auditable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long phoneid;

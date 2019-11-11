@@ -3,12 +3,13 @@ package com.stepasha.zoo.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
-
+@Transactional
 @Entity
 @Table(name = "zoo")
-public class Zoo {
+public class Zoo extends Auditable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long zooid;
@@ -31,9 +32,10 @@ public class Zoo {
     private List<Animal> animals = new ArrayList<>();
     public Zoo(){}
 
-    public Zoo(String zooname, List<Telephone> telephones) {
+    public Zoo(String zooname, List<Telephone> telephones, List<Animal> animals) {
         this.zooname = zooname;
         this.telephones = telephones;
+        this.animals = animals;
     }
 
     public long getZooid() {
@@ -45,11 +47,11 @@ public class Zoo {
     }
 
     public String getZooname() {
-        return zooname;
+        return zooname.toLowerCase();
     }
 
     public void setZooname(String zooname) {
-        this.zooname = zooname;
+        this.zooname = zooname.toLowerCase();
     }
 
     public List<Telephone> getTelephones() {
@@ -67,4 +69,5 @@ public class Zoo {
     public void setAnimals(List<Animal> animals) {
         this.animals = animals;
     }
+
 }
