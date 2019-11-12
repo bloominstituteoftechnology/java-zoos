@@ -2,6 +2,7 @@ package com.stepasha.zoo.services;
 
 import com.stepasha.zoo.models.Telephone;
 import com.stepasha.zoo.models.Zoo;
+import com.stepasha.zoo.repos.AnimalRepository;
 import com.stepasha.zoo.repos.ZooRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,8 @@ public class ZooServiceImpl implements ZooService{
 
     @Autowired
     private ZooRepository zoorepo;
+    @Autowired
+    private AnimalRepository animalRepo;
 
 
     @Override
@@ -71,6 +74,26 @@ public class ZooServiceImpl implements ZooService{
     }
     return zoorepo.save(currentZoo);
 
+    }
+
+    @Override
+    public void deleteZooAnimal(long zooid, long animalid) {
+        zoorepo.findById(zooid).orElseThrow(() -> new EntityNotFoundException("Zoo id " + zooid + " not found"));
+        animalRepo.findById(zooid).orElseThrow(() -> new EntityNotFoundException("Zoo id " + animalid + " not found"));
+
+        if (animalRepo.checkZooAnimalCombo(zooid, animalid).getCount() > 0) {
+            animalRepo.deleteZooAnimals(zooid, animalid);
+        } else throw new EntityNotFoundException("Zoo Animal Combo does not exist");
+    }
+
+    @Override
+    public void addZooAnimal(long zooid, long animalid) {
+        zoorepo.findById(zooid).orElseThrow(() -> new EntityNotFoundException("Zoo id " + zooid + " not found"));
+        animalRepo.findById(zooid).orElseThrow(() -> new EntityNotFoundException("Zoo id " + animalid + " not found"));
+
+        if (animalRepo.checkZooAnimalCombo(zooid, animalid).getCount() <= 0) {
+            animalRepo.insertZooanimal(zooid, animalid);
+        } else throw new EntityNotFoundException("Zoo animal combo already exists");
     }
 }
 

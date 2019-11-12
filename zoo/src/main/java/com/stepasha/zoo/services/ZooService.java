@@ -16,4 +16,9 @@ public interface ZooService {
     Zoo saveZoo(Zoo zoo);
 
     Zoo updateZoo(Zoo zoo, long id);
+
+    //todo 2
+    void deleteZooAnimal(long zooid, long animalid);
+
+    void addZooAnimal(long zooid, long animalid);
 }
