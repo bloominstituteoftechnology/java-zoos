@@ -1,11 +1,14 @@
 package com.stepasha.zoo.repos;
 
 import com.stepasha.zoo.models.Animal;
+import com.stepasha.zoo.viws.AnimalCountZoos;
 import com.stepasha.zoo.viws.JustTheCount;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 public interface AnimalRepository extends CrudRepository<Animal, Long>
 {
@@ -25,10 +28,10 @@ public interface AnimalRepository extends CrudRepository<Animal, Long>
     void insertZooanimal(long zooid, long animalid);
 
     // returns list of animals and counts
-    // SELECT a.animalid as animalnamerpt, a.animaltype, count(z.animalid) as countanimal FROM animals a JOIN zooanimals z ON z.animalid = a.animalid GROUP BY a.animalid
-    //@Query(value = "SELECT a.animaltype, count(z.animalid) as countanimal FROM animals a JOIN zooanimals z ON z.animalid = a.animalid GROUP BY a.animalid",
-   //         nativeQuery = true)
-//    List<AnimalCountZoos> getListOfAnimalsZoos();
+     //SELECT a.animalid as animalnamerpt, a.animaltype, count(z.animalid) as countanimal FROM animals a JOIN zooanimals z ON z.animalid = a.animalid GROUP BY a.animalid
+    @Query(value = "SELECT a.animaltype, count(z.animalid) as countanimal FROM animal a JOIN zooanimals z ON z.animalid = a.animalid GROUP BY a.animalid",
+            nativeQuery = true)
+    List<AnimalCountZoos> getListOfAnimalsZoos();
 
     @Query(value = "UPDATE animals SET animaltype = :animaltype WHERE animalid = :animalid", nativeQuery = true)
     Animal updateAnimaltype(long animalid, String animaltype);

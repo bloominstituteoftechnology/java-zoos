@@ -1,6 +1,7 @@
 package com.stepasha.zoo.services;
 
 import com.stepasha.zoo.models.Animal;
+import com.stepasha.zoo.viws.AnimalCountZoos;
 
 import java.util.List;
 //todo 4 create animalService class in case of editing an animal
@@ -15,4 +16,5 @@ public interface AnimalService {
     Animal save(Animal animal);
 
     Animal update(long id, Animal animal);
+    List<AnimalCountZoos> getCountOfAnimalPresenceAtZoos();
 }

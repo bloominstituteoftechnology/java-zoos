@@ -3,12 +3,16 @@ package com.stepasha.zoo.services;
 import com.stepasha.zoo.models.Animal;
 import com.stepasha.zoo.repos.AnimalRepository;
 import com.stepasha.zoo.repos.ZooRepository;
+import com.stepasha.zoo.viws.AnimalCountZoos;
+import com.stepasha.zoo.viws.JustTheCount;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 //todo 6 impl the service
+@Service(value = "animalService")
 public class AnimalServiceImpl implements AnimalService {
 
     @Autowired
@@ -23,6 +27,8 @@ public class AnimalServiceImpl implements AnimalService {
         animalrepo.findAll().iterator().forEachRemaining(list::add);
         return list;
     }
+
+
 
     @Override
     public Animal findAnimalById(long id) {
@@ -54,5 +60,10 @@ public class AnimalServiceImpl implements AnimalService {
             animalrepo.updateAnimaltype(id, animal.getAnimaltype());
         } else throw new EntityNotFoundException("No animal with id " + id + " exists");
         return findAnimalById(id);
+    }
+
+    @Override
+    public List<AnimalCountZoos> getCountOfAnimalPresenceAtZoos() {
+        return animalrepo.getListOfAnimalsZoos();
     }
 }

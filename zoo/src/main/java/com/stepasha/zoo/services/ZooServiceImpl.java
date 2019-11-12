@@ -22,8 +22,7 @@ public class ZooServiceImpl implements ZooService{
     private ZooRepository zoorepo;
     @Autowired
     private AnimalRepository animalRepo;
-    @Autowired
-    private  ZooService zooService;
+
 
     @Override
     public ArrayList<Zoo> findAllZoos() {
