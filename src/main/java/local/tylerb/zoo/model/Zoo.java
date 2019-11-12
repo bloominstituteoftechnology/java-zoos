@@ -19,7 +19,7 @@ public class Zoo extends Auditable {
     // TODO why is zoo singular here
     @OneToMany(mappedBy = "zoo", cascade = CascadeType.ALL)
     @JsonIgnoreProperties("zoo")
-    private List<Telephone> telephonesList = new ArrayList<>();
+    private List<Telephone> telephones = new ArrayList<>();
 
     @OneToMany(mappedBy = "zoo", cascade = CascadeType.ALL)
     @JsonIgnoreProperties("zoo")
@@ -51,12 +51,12 @@ public class Zoo extends Auditable {
         this.zooname = zooname;
     }
 
-    public List<Telephone> getTelephonesList() {
-        return telephonesList;
+    public List<Telephone> getTelephones() {
+        return telephones;
     }
 
-    public void setTelephonesList(List<Telephone> telephonesList) {
-        this.telephonesList = telephonesList;
+    public void setTelephones(List<Telephone> telephones) {
+        this.telephones = telephones;
     }
 
     public List<ZooAnimals> getZooanimals() {
