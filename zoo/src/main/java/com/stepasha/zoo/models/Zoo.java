@@ -16,19 +16,22 @@ public class Zoo extends Auditable {
 
     private String zooname;
 
-    @ManyToMany(mappedBy = "zoos")
-    @JsonIgnoreProperties("zoos")
-    private List<Animal> animals = new ArrayList<>();
+    @OneToMany(mappedBy = "zoo", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties(value = "zoo", allowSetters = true)
+    private List<ZooAnimals> zooanimals = new ArrayList<>();
 
     @OneToMany(mappedBy = "zoo", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnoreProperties("zoo")
+    @JsonIgnoreProperties(value = "zoo", allowSetters = true)
     private List<Telephone> telephones = new ArrayList<>();
 
-    public Zoo() {
-    }
+    public Zoo() {}
 
-    public Zoo(String zooname) {
+    public Zoo(String zooname, List<ZooAnimals> zooanimals) {
         this.zooname = zooname;
+        for (ZooAnimals zr : zooanimals) {
+            zr.setZoo(this);
+        }
+        this.zooanimals = zooanimals;
     }
 
     public long getZooid() {
@@ -47,12 +50,12 @@ public class Zoo extends Auditable {
         this.zooname = zooname;
     }
 
-    public List<Animal> getAnimals() {
-        return animals;
+    public List<ZooAnimals> getZooanimals() {
+        return zooanimals;
     }
 
-    public void setAnimals(List<Animal> animals) {
-        this.animals = animals;
+    public void setZooanimals(List<ZooAnimals> zooanimals) {
+        this.zooanimals = zooanimals;
     }
 
     public List<Telephone> getTelephones() {

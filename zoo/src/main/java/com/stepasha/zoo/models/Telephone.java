@@ -4,11 +4,10 @@ package com.stepasha.zoo.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Table(name = "telephone")
-public class Telephone extends Auditable implements Serializable {
+public class Telephone extends Auditable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,14 +16,12 @@ public class Telephone extends Auditable implements Serializable {
     private String phonetype;
     private String phonenumber;
 
-    @Id
     @ManyToOne
     @JoinColumn(name = "zooid")
-    @JsonIgnoreProperties("telephones")
+    @JsonIgnoreProperties(value = "zoo", allowSetters = true)
     private Zoo zoo;
 
-    public Telephone() {
-    }
+    public Telephone() {}
 
     public Telephone(String phonetype, String phonenumber, Zoo zoo) {
         this.phonetype = phonetype;
@@ -63,6 +60,4 @@ public class Telephone extends Auditable implements Serializable {
     public void setZoo(Zoo zoo) {
         this.zoo = zoo;
     }
-
-
 }
