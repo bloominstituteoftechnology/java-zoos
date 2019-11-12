@@ -1,6 +1,7 @@
 package com.stepasha.zoo.controllers;
 
 import com.stepasha.zoo.models.Zoo;
+import com.stepasha.zoo.services.TelephoneService;
 import com.stepasha.zoo.services.ZooService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -20,6 +21,8 @@ public class ZooController
 {
     @Autowired
     private ZooService zooService;
+    @Autowired
+    private TelephoneService telephoneService;
    // http://localhost:2020/zoos/zoos
     @GetMapping(value = "/zoos", produces = {"application/json"})
     public ResponseEntity<?> listAllZoos()
@@ -95,4 +98,5 @@ public class ZooController
         zooService.addZooAnimal(zooid, animalid);
         return new ResponseEntity(HttpStatus.CREATED);
     }
+
 }
