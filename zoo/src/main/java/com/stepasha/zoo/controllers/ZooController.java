@@ -88,4 +88,11 @@ public class ZooController
         zooService.deleteZooAnimal(zooid, animalid);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+    //todo 7 create new animal in the zoo
+    //localhost:2020/zoos/zoo/{zooid}/animals/{animalid} -- POST
+    @PostMapping(value = "/zoo/{zooid}/animals/{animalid}")
+    public ResponseEntity postZooAnimalByIds(@PathVariable long zooid, @PathVariable long animalid) {
+        zooService.addZooAnimal(zooid, animalid);
+        return new ResponseEntity(HttpStatus.CREATED);
+    }
 }

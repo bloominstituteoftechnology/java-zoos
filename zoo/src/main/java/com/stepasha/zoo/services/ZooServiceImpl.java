@@ -94,12 +94,12 @@ public class ZooServiceImpl implements ZooService{
     @Override
     public void addZooAnimal(long zooid, long animalid) {
         zoorepo.findById(zooid).orElseThrow(() -> new EntityNotFoundException("Zoo id " + zooid + " not found"));
-        animalRepo.findById(zooid).orElseThrow(() -> new EntityNotFoundException("Zoo id " + animalid + " not found"));
+        animalRepo.findById(animalid).orElseThrow(() -> new EntityNotFoundException("Zoo id " + animalid + " not found"));
 
         if (animalRepo.checkZooAnimalCombo(zooid, animalid).getCount() <= 0) {
             animalRepo.insertZooanimal(zooid, animalid);
         } else throw new EntityNotFoundException("Zoo animal combo already exists");
     }
-    
+
 }
 
