@@ -5,7 +5,11 @@ import com.stepasha.zoo.models.Zoo;
 import com.stepasha.zoo.repos.AnimalRepository;
 import com.stepasha.zoo.repos.ZooRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
@@ -18,7 +22,8 @@ public class ZooServiceImpl implements ZooService{
     private ZooRepository zoorepo;
     @Autowired
     private AnimalRepository animalRepo;
-
+    @Autowired
+    private  ZooService zooService;
 
     @Override
     public ArrayList<Zoo> findAllZoos() {
@@ -95,5 +100,6 @@ public class ZooServiceImpl implements ZooService{
             animalRepo.insertZooanimal(zooid, animalid);
         } else throw new EntityNotFoundException("Zoo animal combo already exists");
     }
+    
 }
 

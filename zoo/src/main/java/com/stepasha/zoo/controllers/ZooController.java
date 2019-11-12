@@ -82,15 +82,10 @@ public class ZooController
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-// @DeleteMapping(value = "/zoos/{zooid}/animals/{animalid}")
-// public ResponseEntity<?> deleteZooAnimalCombo(
-//         @PathVariable("zooid")
-//                 long zooid,
-//         @PathVariable("animalid")
-//                 long animalid)
-// {
-//     zooService.deleteZooAnimalCombo(zooid, animalid);
-
-//     return new ResponseEntity<>(HttpStatus.OK);
-// }
+    //localhost:2020/zoos/zoo/{zooid}/animals/{animalid} -- DELETE
+    @DeleteMapping(value = "/zoo/{zooid}/animals/{animalid}")
+    public ResponseEntity<?> deleteZooAnimalByIds(@PathVariable long zooid, @PathVariable long animalid) {
+        zooService.deleteZooAnimal(zooid, animalid);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
