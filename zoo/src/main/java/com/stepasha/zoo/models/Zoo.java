@@ -3,39 +3,32 @@ package com.stepasha.zoo.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
-@Transactional
+
 @Entity
 @Table(name = "zoo")
-public class Zoo extends Auditable{
+public class Zoo extends Auditable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long zooid;
 
-    @Column(nullable = false,
-    unique = true)
     private String zooname;
 
-    @OneToMany(mappedBy = "zoo",
-    cascade = CascadeType.ALL,
-    orphanRemoval = true)
+    @ManyToMany(mappedBy = "zoos")
+    @JsonIgnoreProperties("zoos")
+    private List<Animal> animals = new ArrayList<>();
+
+    @OneToMany(mappedBy = "zoo", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnoreProperties("zoo")
     private List<Telephone> telephones = new ArrayList<>();
 
-    @ManyToMany
-    @JoinTable(name = "zooanimals",
-            joinColumns = {@JoinColumn(name = "zooid")},
-            inverseJoinColumns = {@JoinColumn(name = "animalid")})
-    @JsonIgnoreProperties("zoos")
-    private List<Animal> animals = new ArrayList<>();
-    public Zoo(){}
+    public Zoo() {
+    }
 
-    public Zoo(String zooname, List<Telephone> telephones, List<Animal> animals) {
+    public Zoo(String zooname) {
         this.zooname = zooname;
-        this.telephones = telephones;
-        this.animals = animals;
     }
 
     public long getZooid() {
@@ -47,19 +40,11 @@ public class Zoo extends Auditable{
     }
 
     public String getZooname() {
-        return zooname.toLowerCase();
+        return zooname;
     }
 
     public void setZooname(String zooname) {
-        this.zooname = zooname.toLowerCase();
-    }
-
-    public List<Telephone> getTelephones() {
-        return telephones;
-    }
-
-    public void setTelephones(List<Telephone> telephones) {
-        this.telephones = telephones;
+        this.zooname = zooname;
     }
 
     public List<Animal> getAnimals() {
@@ -70,4 +55,11 @@ public class Zoo extends Auditable{
         this.animals = animals;
     }
 
+    public List<Telephone> getTelephones() {
+        return telephones;
+    }
+
+    public void setTelephones(List<Telephone> telephones) {
+        this.telephones = telephones;
+    }
 }

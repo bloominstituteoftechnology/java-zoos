@@ -4,30 +4,32 @@ package com.stepasha.zoo.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-@Table(name = "telephone",
-uniqueConstraints = {@UniqueConstraint(columnNames =  {"zooid", "phoneid"})})
-public class Telephone extends Auditable{
+@Table(name = "telephone")
+public class Telephone extends Auditable implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long phoneid;
+
     private String phonetype;
     private String phonenumber;
 
-
+    @Id
     @ManyToOne
-    @JoinColumn(name = "zooid",
-    nullable = false)
-    @JsonIgnoreProperties("phoneid")
-    private Zoo zoo; //this is how you make a foreign key
+    @JoinColumn(name = "zooid")
+    @JsonIgnoreProperties("telephones")
+    private Zoo zoo;
 
-    public Telephone(){}
+    public Telephone() {
+    }
 
     public Telephone(String phonetype, String phonenumber, Zoo zoo) {
         this.phonetype = phonetype;
         this.phonenumber = phonenumber;
-        this.zoo =zoo;
+        this.zoo = zoo;
     }
 
     public long getPhoneid() {
@@ -61,4 +63,6 @@ public class Telephone extends Auditable{
     public void setZoo(Zoo zoo) {
         this.zoo = zoo;
     }
+
+
 }

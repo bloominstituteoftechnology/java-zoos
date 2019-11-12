@@ -1,14 +1,14 @@
-DELETE
-FROM zooanimals;
-
-DELETE
-FROM animal;
-
-DELETE
-FROM telephone;
-
-DELETE
-FROM zoo;
+//DELETE
+//FROM zooanimals;
+//
+//DELETE
+//FROM animal;
+//
+//DELETE
+//FROM telephone;
+//
+//DELETE
+//FROM zoo;
 
 INSERT INTO zoo (zooid, zooname, createdby, createddate, lastmodifiedby, lastmodifieddate)
          VALUES (1, 'Gladys Porter Zoo', 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP),
