@@ -20,27 +20,27 @@ You are creating a Java Spring REST API server which stores data in an H2 databa
 ![Zoo Database Layout](zoodb_mvp.png)
 
 * All tables contain the following auditing fields
-  * created_by - user name who created the row. Should default to **SYSTEM**
-  * created_date - date field when the row was created
-  * last_modified_by - user name who last changed data in the row. Should default to **SYSTEM**
-  * last_modified_date - date field when the data in the row was last changed
+  * `created_by` - user name who created the row. Should default to **SYSTEM**
+  * `created_date` - date field when the row was created
+  * `last_modified_by` - user name who last changed data in the row. Should default to **SYSTEM**
+  * `last_modified_date` - date field when the data in the row was last changed
 
 * Zoo
-  * zooid - long primary key
-  * zooname - String Name of the Zoo
+  * `zooid` - long primary key
+  * `zooname` - String Name of the Zoo
 
 * Telephone
-  * phoneid - long primary key
-  * phonetype - String - something like MAIN, EDUCATION, MEMBERSHIP, FAX, OPERATOR, OTHER
-  * phonenumber - String - a telephone number in any format
-  * zooid - foreign key to the Zoo table indicating the zoo who holds this telephone number
+  * `phoneid` - long primary key
+  * `phonetype` - String - something like MAIN, EDUCATION, MEMBERSHIP, FAX, OPERATOR, OTHER
+  * `phonenumber` - String - a telephone number in any format
+  * `zooid` - foreign key to the Zoo table indicating the zoo who holds this telephone number
   
 There is a one to many relationship between zoos and telephones. One zoo can have multiple phone numbers but each phone number can only belong to one zoo.
 
 * Animal
-  * animalid - long primary key
-  * animaltype - String - the type of animal such as lion or llama
-  * incomingzoo - String - the name of the zoo when the animal came from. The field can be left blank or null if the animal does not come from another zoo.
+  * `animalid` - long primary key
+  * `animaltype` - String - the type of animal such as lion or llama
+  * `incomingzoo` - String - the name of the zoo when the animal came from. The field can be left blank or null if the animal does not come from another zoo.
 
 There is a many to many relationship between zoos and animals. A zoo may have many animal types and an animal type may be at many zoos.
 
