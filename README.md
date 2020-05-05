@@ -15,7 +15,7 @@ This is a basic database scheme with zoos, animals, and telephones for the zoos.
 
 ### Database layout
 
-You are creating a Java Spring REST API server which stores data in an H2 database. The table layouts should be
+You are creating a Java Spring REST API server that stores data in an H2 database. The table layouts should be
 
 ![Zoo Database Layout](zoodb_mvp.png)
 
