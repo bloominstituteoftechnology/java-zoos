@@ -44,4 +44,10 @@ INSERT INTO zooanimals (zooid, animalid, createdby, createddate, lastmodifiedby,
                 (3, 1, 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP),
                 (3, 2, 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP);
 
+/*
+We must tell hibernate the ids that have already been used.
+The number must be larger than the last used id.
+10 > 7 so we are good!
+ */
+
 alter sequence hibernate_sequence restart with 10;

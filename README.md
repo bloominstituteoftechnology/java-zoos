@@ -40,9 +40,13 @@ There is a one to many relationship between zoos and telephones. One zoo can hav
 * Animal
   * `animalid` - long primary key
   * `animaltype` - String - the type of animal such as lion or llama
-  * `incomingzoo` - String - the name of the zoo when the animal came from. The field can be left blank or null if the animal does not come from another zoo.
 
-There is a many to many relationship between zoos and animals. A zoo may have many animal types and an animal type may be at many zoos.
+Zooaminals represents is a many to many relationship between zoos and animals. A zoo may have many animal types and an animal type may be at many zoos.
+
+* Zooanimals
+  * `zooid` - long foreign key to zoo
+  * `animalid` - long foreign key to animal
+  * `incomingzoo` - String - the name of the zoo when the animal came from. The field can be left blank or null if the animal does not come from another zoo.
 
 Using the provided seed data, a successful application will return the follow data based on the given endpoint. Expand the section of the endpoint to see the data that is returned.
 
