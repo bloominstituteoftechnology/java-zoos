@@ -1,5 +1,6 @@
 package local.youngw417.java_zoo.controllers;
 
+import local.youngw417.java_zoo.models.Telephone;
 import local.youngw417.java_zoo.services.TelephoneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -21,102 +22,69 @@ public class TelephoneController {
     @Autowired
     TelephoneService telephoneService;
 
-    /**
-     * List of all users emails
-     * <br>Example: <a href="http://localhost:2019/useremails/useremails">http://localhost:2019/useremails/useremails</a>
-     *
-     * @return JSON list of all users emails
-     */
-    @GetMapping(value = "/useremails",
+    @GetMapping(value = "/telephones",
             produces = "application/json")
-    public ResponseEntity<?> listAllUseremails()
+    public ResponseEntity<?> listAllTelephones()
     {
-        List<Useremail> allUserEmails = useremailService.findAll();
-        return new ResponseEntity<>(allUserEmails,
+        List<Telephone> allTelephones = telephoneService.findAll();
+        return new ResponseEntity<>(allTelephones,
                 HttpStatus.OK);
     }
 
-    /**
-     * Return the user email combination referenced by the given primary key
-     * <br>Example: <a href="http://localhost:2019/useremails/useremail/8">http://localhost:2019/useremails/useremail/8</a>
-     *
-     * @param useremailId the primary key of the user email combination you seek
-     * @return JSON object of the user email combination you seek with a status of OK
-     */
-    @GetMapping(value = "/useremail/{useremailId}",
+
+    @GetMapping(value = "/telephone/{phoneid}",
             produces = "application/json")
-    public ResponseEntity<?> getUserEmailById(
+    public ResponseEntity<?> getTelephoneById(
             @PathVariable
-                    Long useremailId)
+                    Long phoneid)
     {
-        Useremail ue = useremailService.findUseremailById(useremailId);
-        return new ResponseEntity<>(ue,
+        Telephone te = telephoneService.findTelephoneById(phoneid);
+        return new ResponseEntity<>(te,
                 HttpStatus.OK);
     }
 
-    /**
-     * Removes the given user email combination
-     * <br>Example: <a href="http://localhost:2019/useremails/useremail/8">http://localhost:2019/useremails/useremail/8</a>
-     *
-     * @param useremailid the primary key of the user email combination you wish to remove
-     * @return Status of OK
-     */
-    @DeleteMapping(value = "/useremail/{useremailid}")
-    public ResponseEntity<?> deleteUserEmailById(
+
+    @DeleteMapping(value = "/telephone/{phoneid}")
+    public ResponseEntity<?> deleteTelephoneById(
             @PathVariable
-                    long useremailid)
+                    long phoneid)
     {
-        useremailService.delete(useremailid);
+        telephoneService.delete(phoneid);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    /**
-     * Change the email associated with the given user email combination
-     * <br>Example: <a href="http://localhost:2019/useremails/useremail/9/email/favbun@hops.local">http://localhost:2019/useremails/useremail/9/email/favbun@hops.local</a>
-     *
-     * @param useremailid  The primary key of the user email combination you wish to change
-     * @param emailaddress The new email (String)
-     * @return Status of OK
-     */
-    @PutMapping("/useremail/{useremailid}/email/{emailaddress}")
-    public ResponseEntity<?> updateUserEmail(
+
+    @PutMapping("/telephone/{phoneid}/phone/{phonenumber}")
+    public ResponseEntity<?> updatePhoneNumber(
             @PathVariable
-                    long useremailid,
+                    long phoneid,
             @PathVariable
-                    String emailaddress)
+                    String phonenumber)
     {
-        useremailService.update(useremailid,
-                emailaddress);
+        telephoneService.update(phoneid,
+                phonenumber);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    /**
-     * Adds a new user email combination
-     *
-     * @param userid       the user id of the new user email combination
-     * @param emailaddress the email address of the new user eamil combination
-     * @return A location header with the URI to the newly created user email combination and a status of CREATED
-     * @throws URISyntaxException Exception if something does not work in creating the location header
-     * @see UseremailService#save(long, String) UseremailService.save(long, String)
-     */
-    @PostMapping(value = "/user/{userid}/email/{emailaddress}")
-    public ResponseEntity<?> addNewUserEmail(
+
+    @PostMapping(value = "/zoo/{zooid}/phone/{phonenumber}")
+    public ResponseEntity<?> addNewTelephoe(
             @PathVariable
-                    long userid,
+                    long zooid,
             @PathVariable
-                    String emailaddress) throws
+                    String phonenumber) throws
             URISyntaxException
     {
-        Useremail newUserEmail = useremailService.save(userid,
-                emailaddress);
+        Telephone newTelephone = telephoneService.save(zooid,
+                phonenumber);
 
         // set the location header for the newly created resource
         HttpHeaders responseHeaders = new HttpHeaders();
-        URI newUserEmailURI = ServletUriComponentsBuilder.fromCurrentServletMapping()
-                .path("/useremails/useremail/{useremailid}")
-                .buildAndExpand(newUserEmail.getUseremailid())
+        URI newTelephoneURI = ServletUriComponentsBuilder.fromCurrentServletMapping()
+                .path("/telephones/telephone/{phoneid}")
+                .buildAndExpand(newTelephone.getPhoneid())
                 .toUri();
-        responseHeaders.setLocation(newUserEmailURI);
+        responseHeaders.setLocation(newTelephoneURI);
 
         return new ResponseEntity<>(null,
                 responseHeaders,
