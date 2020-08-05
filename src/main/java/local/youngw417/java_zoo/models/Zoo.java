@@ -57,5 +57,13 @@ public class Zoo {
     public void setTelephones(List<Telephone> telephones) {
         this.telephones = telephones;
     }
+
+    public Set<Zooanimals> getAnimals() {
+        return animals;
+    }
+
+    public void setAnimals(Set<Zooanimals> animals) {
+        this.animals = animals;
+    }
 }
 
