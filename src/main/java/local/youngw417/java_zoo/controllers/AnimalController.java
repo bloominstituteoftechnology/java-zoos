@@ -2,21 +2,22 @@ package local.youngw417.java_zoo.controllers;
 
 import local.youngw417.java_zoo.models.Animal;
 import local.youngw417.java_zoo.services.AnimalService;
+import local.youngw417.java_zoo.views.AnimalCount;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
 
+
+@RestController
+@RequestMapping("/animals")
 public class AnimalController {
     /**
      * Using the Role service to process Role data
@@ -55,7 +56,16 @@ public class AnimalController {
                     Long animalid)
     {
         Animal a = animalService.findAnimalById(animalid);
-        return new ResponseEntity<>(r,
+        return new ResponseEntity<>(a,
+                HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/animal/count",
+            produces = "application/json")
+    public ResponseEntity<?> getAnimalCount()
+    {
+        List<AnimalCount> mycount = animalService.getAnimalCount();
+        return new ResponseEntity<>(mycount,
                 HttpStatus.OK);
     }
 
@@ -67,13 +77,13 @@ public class AnimalController {
      * @return JSON object of the role you seek
      * @see RoleService#findByName(String) RoleService.findByName(String)
      */
-    @GetMapping(value = "/animal/name/{animalName}",
+    @GetMapping(value = "/animal/type/{animaltype}",
             produces = "application/json")
-    public ResponseEntity<?> getAnimalByName(
+    public ResponseEntity<?> getAnimalByType(
             @PathVariable
-                    String animalName)
+                    String animaltype)
     {
-        Animal a = animalService.findByName(animalName);
+        Animal a = animalService.findByAnimaltype(animaltype);
         return new ResponseEntity<>(a,
                 HttpStatus.OK);
     }

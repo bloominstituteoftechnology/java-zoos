@@ -8,7 +8,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = " zooanimals")
-public class Zooanimals implements Serializable {
+public class Zooanimals extends Auditable implements Serializable {
 
     @Id
     @ManyToOne

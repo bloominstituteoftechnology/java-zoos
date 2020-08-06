@@ -39,7 +39,7 @@ public class ZooServiceImpl implements ZooService{
 
     @Override
     public Zoo findZooById(long zooid) {
-        EntityNotFoundException
+//        throw EntityNotFoundException;
 
             return zoorepos.findById(zooid)
                     .orElseThrow(() -> new EntityNotFoundException("Zoo id " + zooid + " not found!"));
@@ -91,7 +91,7 @@ public class ZooServiceImpl implements ZooService{
         {
             newZoo.getTelephones()
                     .add(new Telephone(te.getPhonetype(),te.getPhonenumber(),
-                         te.getZoo());
+                         te.getZoo()));
         }
 
         return zoorepos.save(newZoo);
@@ -102,21 +102,17 @@ public class ZooServiceImpl implements ZooService{
     public Zoo update(Zoo zoo, long id) {
         Zoo currentZoo = findZooById(id);
 
-        if (zoo.getZooname() != null)
-        {
+        if (zoo.getZooname() != null) {
             currentZoo.setZooname(zoo.getZooname()
                     .toLowerCase());
         }
 
 
-
         if (zoo.getAnimals()
-                .size() > 0)
-        {
+                .size() > 0) {
             currentZoo.getAnimals()
                     .clear();
-            for (Zooanimals z : zoo.getAnimals())
-            {
+            for (Zooanimals z : zoo.getAnimals()) {
                 Animal newAnimal = animalService.findAnimalById(z.getAnimal().getAnimalid());
 
                 currentZoo.getAnimals()
@@ -124,17 +120,19 @@ public class ZooServiceImpl implements ZooService{
             }
         }
 
-        if (Zoo.getTelephones()
-                .size() > 0)
-        {
+        if (zoo.getTelephones()
+                .size() > 0) {
             currentZoo.getTelephones()
                     .clear();
-            for (Telephone te : zoo.getTelephones())
-            {
+            for (Telephone te : zoo.getTelephones()) {
                 currentZoo.getTelephones()
                         .add(new Telephone(te.getPhonetype(), te.getPhonenumber(),
                                 currentZoo));
             }
+        }
+
+        return zoorepos.save(currentZoo);
+
     }
 
     @Transactional
@@ -143,7 +141,7 @@ public class ZooServiceImpl implements ZooService{
             zoorepos.findById(id)
                     .orElseThrow(() -> new EntityNotFoundException("Zoo id " + id + " not found!"));
             zoorepos.deleteById(id);
-        }
+        };
 
-    }
 }
+

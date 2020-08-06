@@ -3,7 +3,9 @@ package local.youngw417.java_zoo.services;
 import local.youngw417.java_zoo.models.Animal;
 import local.youngw417.java_zoo.repository.AnimalRepository;
 import local.youngw417.java_zoo.repository.ZooRepository;
+import local.youngw417.java_zoo.views.AnimalCount;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityExistsException;
@@ -12,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Transactional
-@Override
+@Service(value = "animalService")
 public class AnimalServiiceImpl implements AnimalService {
 
     @Autowired
@@ -25,7 +27,7 @@ public class AnimalServiiceImpl implements AnimalService {
     ZooRepository zoorepos;
 
     @Autowired
-    private UserAuditing userAuditing;
+    private ZooAuditing zooAuditing;
 
     @Override
     public List<Animal> findAll()
@@ -50,18 +52,23 @@ public class AnimalServiiceImpl implements AnimalService {
     }
 
     @Override
-    public Animal findByName(String name)
+    public Animal findByAnimaltype(String type)
     {
-    Animal an = animalrepos.findByNameIgnoreCase(name);
+    Animal an = animalrepos.findByAnimaltype(type);
 
         if (an != null)
     {
         return an;
     } else
     {
-        throw new EntityNotFoundException(name);
+        throw new EntityNotFoundException(type);
     }
 }
+
+    @Override
+    public List<AnimalCount> getAnimalCount() {
+        return animalrepos.getAnimalCount();
+    }
 
     @Transactional
     @Override
@@ -86,8 +93,8 @@ public class AnimalServiiceImpl implements AnimalService {
     @Transactional
     @Override
     public Animal update(long id, Animal animal) {
-        if (animal.getName() ==  null){
-            throw new EntityNotFoundException("No animal name found to update");
+        if (animal.getAnimaltype() ==  null){
+            throw new EntityNotFoundException("No animal type found to update");
         }
 
         if (animal.getZoos().size() > 0){
@@ -95,7 +102,7 @@ public class AnimalServiiceImpl implements AnimalService {
         }
 
         Animal newAnimal = findAnimalById(id);
-        animalrepos.updateAnimalName(userAuditing.getCurrentAuditor().get(), id, animal.getName());
+        animalrepos.updateAnimalType(zooAuditing.getCurrentAuditor().get(), id, animal.getAnimaltype());
         return newAnimal;
     }
 }

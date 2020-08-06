@@ -1,6 +1,7 @@
 package local.youngw417.java_zoo.services;
 
 import local.youngw417.java_zoo.models.Animal;
+import local.youngw417.java_zoo.views.AnimalCount;
 
 import java.util.List;
 
@@ -34,7 +35,9 @@ public interface AnimalService {
      * @param name The name (String) of the role you seek
      * @return The Role object matching the given name
      */
-    Animal findByName(String name);
+    Animal findByAnimaltype(String type);
+
+    List<AnimalCount> getAnimalCount();
 
     public void deleteAll();
 

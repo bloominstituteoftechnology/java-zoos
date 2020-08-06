@@ -7,8 +7,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "animals")
-public class Animal {
+@Table(name = "animal")
+public class Animal extends Auditable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

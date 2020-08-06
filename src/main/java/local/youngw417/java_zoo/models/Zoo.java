@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name= "zoos")
-public class Zoo {
+@Table(name= "zoo")
+public class Zoo extends Auditable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

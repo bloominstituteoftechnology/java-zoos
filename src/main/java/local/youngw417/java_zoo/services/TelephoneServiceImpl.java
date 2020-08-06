@@ -4,12 +4,15 @@ import local.youngw417.java_zoo.models.Telephone;
 import local.youngw417.java_zoo.models.Zoo;
 import local.youngw417.java_zoo.repository.TelephoneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Transactional
+@Service(value = "telephoneService")
 public class TelephoneServiceImpl implements TelephoneService {
 
     @Autowired

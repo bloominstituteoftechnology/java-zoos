@@ -14,6 +14,8 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
+@RestController
+@RequestMapping("/zoos")
 public class ZooController {
 
         /**
