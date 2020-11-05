@@ -432,5 +432,5 @@ Expose the following Endpoint
 
 * [ ] POST /zoos/zoo - adds a zoo including new telephone number and zoo animal combinations. The Animal Type must already exist.  * In the header return as the location of the newly created zoo POST /zoos/zoo/{id}
 * [ ] PUT /zoos/zoo/{id} - Completely replace the zoo record and all accompany records based off of the given zoo id.
-* [ ] PATCH /zoos/zoo{id} - Updates the zoo with new information. Only the new data is to be sent from the frontend client.
+* [ ] PATCH /zoos/zoo/{id} - Updates the zoo with new information. Only the new data is to be sent from the frontend client.
 * [ ] DELETE /zoos/zoo/{id} - delete the zoo, associated phone numbers, and zoo animals combination associated with this zoo id
