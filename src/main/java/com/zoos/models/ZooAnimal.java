@@ -10,7 +10,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "zooanimals")
 @IdClass(ZooAnimalId.class)
-public class ZooAnimals extends Auditable implements Serializable
+public class ZooAnimal extends Auditable implements Serializable
 {
     @Id
     @ManyToOne

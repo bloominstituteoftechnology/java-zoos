@@ -1,7 +1,7 @@
 package com.zoos.services;
 
 import com.zoos.repositories.AnimalRepository;
-import com.zoos.views.CountAnimalInZoo;
+import com.zoos.views.CountAnimals;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,9 +15,9 @@ public class AnimalServiceImpl implements AnimalService
     private AnimalRepository animalrepos;
 
     @Override
-    public ArrayList<CountAnimalInZoo> getCountAnimalInZoo()
+    public ArrayList<CountAnimals> getCountAnimalInZoo()
     {
-        return animalrepos.getCountAnimalInZoo();
+        return animalrepos.getCountAnimals();
     }
 }
 

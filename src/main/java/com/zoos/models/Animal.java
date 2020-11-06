@@ -24,7 +24,7 @@ public class Animal extends Auditable
         cascade = CascadeType.ALL)
     @JsonIgnoreProperties(value = "animal",
         allowSetters = true)
-    private Set<ZooAnimal> zoos = new HashSet<>();
+    private Set<ZooAnimals> zoos = new HashSet<>();
 
 
     public Animal()

@@ -47,7 +47,7 @@ public class ZooAnimalsId implements Serializable
         {
             return true;
         }
-        // boolean temp = (o.getClass() instanceof Class);
+
         if (o == null || getClass() != o.getClass())
         {
             return false;

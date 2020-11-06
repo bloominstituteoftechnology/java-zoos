@@ -46,11 +46,9 @@ public class ZooController
         @RequestBody
             Zoo newZoo) throws URISyntaxException
     {
-        // nullify the zoo id
         newZoo.setZooid(0);
         newZoo = zooService.save(newZoo);
 
-        // set the location header for the newly created resource
         HttpHeaders responseHeaders = new HttpHeaders();
         URI newRestaurantURI = ServletUriComponentsBuilder.fromCurrentRequest()
             .path("/{zooid}")
