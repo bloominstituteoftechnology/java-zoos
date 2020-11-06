@@ -119,7 +119,6 @@ public class ZooServiceImpl implements ZooService
         {
             currentZoo.getAnimals()
                 .clear();
-            // adds new phone numbers to list
             for (Telephone t : zoo.getTelephones())
             {
                 currentZoo.getTelephones()
