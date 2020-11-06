@@ -1,5 +1,11 @@
 package com.zoos.services;
 
-public class AnimalService
+import com.zoos.views.CountAnimalInZoo;
+
+import java.util.ArrayList;
+
+public interface AnimalService
 {
+
+    ArrayList<CountAnimalInZoo> getCountAnimalInZoo();
 }
