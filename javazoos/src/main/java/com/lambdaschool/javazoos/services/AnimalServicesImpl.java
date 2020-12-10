@@ -21,4 +21,6 @@ public class AnimalServicesImpl implements AnimalServices
         List<AnimalCounts> rtnList = animalrepos.findAnimalCounts();
         return rtnList;
     }
+
+
 }

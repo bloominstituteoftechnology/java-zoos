@@ -7,4 +7,5 @@ import java.util.List;
 public interface AnimalServices
 {
     List<AnimalCounts> findAnimalCounts();
+
 }
