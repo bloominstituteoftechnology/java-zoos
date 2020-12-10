@@ -28,7 +28,7 @@ public class ZooAnimalsId implements Serializable
     {
         return animal;
     }
-    
+
     public void setAnimal(long animal)
     {
         this.animal = animal;
