@@ -11,11 +11,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Transactional
-@Service(value = "zooService")
+@Service(value = "zooServices")
 public class ZooServicesImpl implements ZooServices
 {
     @Autowired
     private ZooRepository zoorepos;
+
 
     @Override
     public List<Zoo> findAllZoos()

@@ -24,4 +24,55 @@ public class Telephone extends Auditable
     @JsonIgnoreProperties(value = "telephones", allowSetters = true)
     private Zoo zoo;
 
+    public Telephone()
+    {
+    }
+
+    public Telephone(
+        String phonetype,
+        String phonenumber)
+    {
+        this.phonetype = phonetype;
+        this.phonenumber = phonenumber;
+    }
+
+    public long getPhoneid()
+    {
+        return phoneid;
+    }
+
+    public void setPhoneid(long phoneid)
+    {
+        this.phoneid = phoneid;
+    }
+
+    public String getPhonetype()
+    {
+        return phonetype;
+    }
+
+    public void setPhonetype(String phonetype)
+    {
+        this.phonetype = phonetype;
+    }
+
+    public String getPhonenumber()
+    {
+        return phonenumber;
+    }
+
+    public void setPhonenumber(String phonenumber)
+    {
+        this.phonenumber = phonenumber;
+    }
+
+    public Zoo getZoo()
+    {
+        return zoo;
+    }
+
+    public void setZoo(Zoo zoo)
+    {
+        this.zoo = zoo;
+    }
 }
