@@ -23,16 +23,21 @@ public class ZooAnimals extends Auditable implements Serializable
     @JsonIgnoreProperties(value = "zoos")
     private Animal animal;
 
+    @Column
+    private String incomingzoo;
+
     public ZooAnimals()
     {
     }
 
     public ZooAnimals(
         Zoo zoo,
-        Animal animal)
+        Animal animal,
+        String incomingzoo)
     {
         this.zoo = zoo;
         this.animal = animal;
+        this.incomingzoo = incomingzoo;
     }
 
     public Zoo getZoo()
@@ -54,6 +59,18 @@ public class ZooAnimals extends Auditable implements Serializable
     {
         this.animal = animal;
     }
+
+    public String getIncomingzoo()
+    {
+        return incomingzoo;
+    }
+
+    public void setIncomingzoo(String incomingzoo)
+    {
+        this.incomingzoo = incomingzoo;
+    }
+
+
 
     @Override
     public boolean equals(Object o) {

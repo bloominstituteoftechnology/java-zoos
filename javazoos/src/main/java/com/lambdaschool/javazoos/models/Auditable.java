@@ -16,16 +16,16 @@ import java.util.Date;
 @EntityListeners(AuditingEntityListener.class)
 public abstract class Auditable {
     @CreatedBy
-    protected String createdby;
+    protected String created_by;
 
     @CreatedDate
     @Temporal(TemporalType.TIMESTAMP)
-    protected Date createddate;
+    protected Date created_date;
 
     @LastModifiedBy
-    protected String lastmodifiedby;
+    protected String last_modified_by;
 
     @LastModifiedDate
     @Temporal(TemporalType.TIMESTAMP)
-    protected Date lastmodifieddate;
+    protected Date last_modified_date;
 }
