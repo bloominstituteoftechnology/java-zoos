@@ -29,7 +29,7 @@ public class Zoo extends Auditable
     @OneToMany(mappedBy = "zoo",
     cascade = CascadeType.ALL,
     orphanRemoval = true)
-    @JsonIgnoreProperties(value = "user", allowSetters = true)
+    @JsonIgnoreProperties(value = "zoo", allowSetters = true)
     private Set<ZooAnimals> animals = new HashSet<>();
 
     public Zoo()
