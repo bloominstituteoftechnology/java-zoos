@@ -4,8 +4,8 @@ import javax.persistence.Embeddable;
 import java.io.Serializable;
 
 @Embeddable
-public class ZooAnimalsId implements Serializable
-{
+public class ZooAnimalsId implements Serializable {
+
     private long zoo;
 
     private long animal;
