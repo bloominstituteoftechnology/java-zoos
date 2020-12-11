@@ -23,4 +23,6 @@ public class AnimalController
         List<AnimalCounts> rtnList = animalServices.findAnimalCounts();
         return new ResponseEntity<>(rtnList, HttpStatus.OK);
     }
+
+
 }
