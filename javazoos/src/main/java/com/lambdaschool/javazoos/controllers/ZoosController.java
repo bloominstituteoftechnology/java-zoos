@@ -55,6 +55,17 @@ public class ZoosController
     }
 
     //    PUT http://localhost:2019/zoos/zoo/5
+    @PutMapping(value = "/zoo/{zooid}", consumes = "application/json")
+    public ResponseEntity<?> updateFullZoo(@Valid @RequestBody Zoo updateZoo, @PathVariable long zooid)
+    {
+        updateZoo.setZooid(zooid);
+        zooServices.save(updateZoo);
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
+
     //    PATCH http://localhost:2019/zoos/zoo/4
     //    DELETE http://localhost:2019/zoos/zoo/5
 }
