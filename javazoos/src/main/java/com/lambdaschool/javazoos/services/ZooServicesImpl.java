@@ -73,4 +73,49 @@ public class ZooServicesImpl implements ZooServices
         }
         return zoorepos.save(newZoo);
     }
+
+        @Transactional
+        @Override
+        public void deleteZooById(long id)
+        {
+            zoorepos.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Zoo id " + id + " Not Found"));
+            zoorepos.deleteById(id);
+        }
+
+        @Transactional
+        @Override
+        public Zoo updateZooById(Zoo zoo, long id)
+        {
+            Zoo currentZoo = findZooById(id);
+
+            if (zoo.getZooname() != null)
+            {
+                currentZoo.setZooname(zoo.getZooname());
+            }
+
+            if (zoo.getAnimals().size() > 0)
+            {
+                currentZoo.getAnimals().clear();
+                for (ZooAnimals za : zoo.getAnimals())
+                {
+                    Animal newAnimal = animalServices.findAnimalById(za.getAnimal().getAnimalid());
+
+                    currentZoo.getAnimals().add(new ZooAnimals(currentZoo, newAnimal, za.getIncomingzoo()));
+                }
+            }
+
+            if (zoo.getTelephones().size() > 0)
+            {
+                currentZoo.getTelephones().clear();
+                for (Telephone t : zoo.getTelephones())
+                {
+                    currentZoo.getTelephones()
+                        .add(new Telephone(t.getPhonetype(), t.getPhonenumber()));
+                }
+            }
+
+            return zoorepos.save(currentZoo);
+        }
+
 }

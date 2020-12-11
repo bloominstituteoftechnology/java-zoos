@@ -64,8 +64,19 @@ public class ZoosController
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-
-
     //    PATCH http://localhost:2019/zoos/zoo/4
+    @PatchMapping(value = "/zoo/{zooid}", consumes = "application/json")
+    public ResponseEntity<?> updateZooById(@RequestBody Zoo updateZoo, @PathVariable long zooid)
+    {
+        zooServices.updateZooById(updateZoo, zooid);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
     //    DELETE http://localhost:2019/zoos/zoo/5
+    @DeleteMapping(value="/zoo/{zooid}")
+    public ResponseEntity<?> deleteZooById(@PathVariable long zooid)
+    {
+        zooServices.deleteZooById(zooid);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
