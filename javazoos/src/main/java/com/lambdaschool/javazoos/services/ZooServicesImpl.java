@@ -65,10 +65,11 @@ public class ZooServicesImpl implements ZooServices
         newZoo.getAnimals().clear();
         for (ZooAnimals za : zoo.getAnimals())
         {
+            String incomingZooAnimal = za.getIncomingzoo();
             Animal newAnimal = animalServices.findAnimalById(za.getAnimal().getAnimalid());
 
             newZoo.getAnimals()
-                .add(new ZooAnimals(newZoo, newAnimal, null));
+                .add(new ZooAnimals(newZoo, newAnimal, incomingZooAnimal));
         }
         return zoorepos.save(newZoo);
     }
