@@ -87,7 +87,9 @@ public class ZooServicesImpl implements ZooServices
         @Override
         public Zoo updateZooById(Zoo zoo, long id)
         {
-            Zoo currentZoo = findZooById(id);
+            Zoo currentZoo = zoorepos.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Zoo Id " + id + " Not Found"));
+
 
             if (zoo.getZooname() != null)
             {
@@ -105,15 +107,28 @@ public class ZooServicesImpl implements ZooServices
                 }
             }
 
-            if (zoo.getTelephones().size() > 0)
-            {
+            if(zoo.getTelephones().size() > 0){
                 currentZoo.getTelephones().clear();
                 for (Telephone t : zoo.getTelephones())
                 {
-                    currentZoo.getTelephones()
-                        .add(new Telephone(t.getPhonetype(), t.getPhonenumber()));
+                    Telephone newTelephone = new Telephone();
+                    newTelephone.setPhonetype(t.getPhonetype());
+                    newTelephone.setPhonenumber(t.getPhonenumber());
+
+                    newTelephone.setZoo(currentZoo);
+                    currentZoo.getTelephones().add(newTelephone);
                 }
             }
+
+//            if (zoo.getTelephones().size() > 0)
+//            {
+//                currentZoo.getTelephones().clear();
+//                for (Telephone t : zoo.getTelephones())
+//                {
+//                    currentZoo.getTelephones()
+//                        .add(new Telephone(t.getPhonetype(), t.getPhonenumber()));
+//                }
+//            }
 
             return zoorepos.save(currentZoo);
         }

@@ -66,7 +66,7 @@ public class ZoosController
 
     //    PATCH http://localhost:2019/zoos/zoo/4
     @PatchMapping(value = "/zoo/{zooid}", consumes = "application/json")
-    public ResponseEntity<?> updateZooById(@RequestBody Zoo updateZoo, @PathVariable long zooid)
+    public ResponseEntity<?> updateZooById(@PathVariable long zooid, @RequestBody Zoo updateZoo)
     {
         zooServices.updateZooById(updateZoo, zooid);
         return new ResponseEntity<>(HttpStatus.OK);
