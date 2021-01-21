@@ -11,14 +11,14 @@ FROM telephones;
 DELETE
 FROM zoos;
 
-INSERT INTO zoos (zooid, zooname, created_by, created_date, last_modified_by, last_modified_date)
+INSERT INTO zoos (zooid, zooname, createdby, createddate, lastmodifiedby, lastmodifieddate)
          VALUES (1, 'Gladys Porter Zoo', 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP),
                 (2, 'Point Defiance Zoo', 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP),
                 (3, 'San Diego Zoo', 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP),
                 (4, 'San Antonio Zoo', 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP),
                 (5, 'Smithsonian National Zoo', 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP);
 
-INSERT INTO telephones (phoneid, phonetype, phonenumber, zooid, created_by, created_date, last_modified_by, last_modified_date)
+INSERT INTO telephones (phoneid, phonetype, phonenumber, zooid, createdby, createddate, lastmodifiedby, lastmodifieddate)
          VALUES (1, 'MAIN', '555-555-5555', 1, 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP),
                 (2, 'EDUCATION', '555-555-1234', 1, 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP),
                 (3, 'MEMBERSHIP', '555-555-4321', 1, 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP),
