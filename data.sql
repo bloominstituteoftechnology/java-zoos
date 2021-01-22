@@ -25,7 +25,7 @@ INSERT INTO telephones (phoneid, phonetype, phonenumber, zooid, createdby, creat
                 (4, 'MAIN', '123-555-5555', 4, 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP),
                 (5, 'MAIN', '555-123-5555', 3, 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP);
 
-INSERT INTO animals (animalid, animaltype, created_by, created_date, last_modified_by, last_modified_date)
+INSERT INTO animals (animalid, animaltype, createdby, createddate, lastmodifiedby, lastmodifieddate)
          VALUES (1, 'lion', 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP),
                 (2, 'bear', 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP),
                 (3, 'monkey', 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP),
@@ -34,7 +34,7 @@ INSERT INTO animals (animalid, animaltype, created_by, created_date, last_modifi
                 (6, 'llama',  'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP),
                 (7, 'turtle', 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP);
 
-INSERT INTO zooanimals (zooid, animalid, incomingzoo, created_by, created_date, last_modified_by, last_modified_date)
+INSERT INTO zooanimals (zooid, animalid, incomingzoo, createdby, createddate, lastmodifiedby, lastmodifieddate)
          VALUES (1, 1, 'Point Defiance Zoo', 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP),
                 (2, 2, 'Gladys Porter Zoo', 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP),
                 (1, 2, 'Point Defiance Zoo', 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP),
