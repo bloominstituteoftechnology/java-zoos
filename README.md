@@ -417,16 +417,16 @@ Status OK
 
 ## Instructions
 
-* [ ] Please fork and clone this repository. This repository does not have a starter project, so create one inside of the cloned repository folder. Regularly commit and push your code as appropriate.
-* [ ] Create the entities needed to store this data.
-* [ ] A data.sql file has been provided with seed data. You can use this class directly or modify it to fit your models. However, the data found in the file is the seed data to use!
+* [x] Please fork and clone this repository. This repository does not have a starter project, so create one inside of the cloned repository folder. Regularly commit and push your code as appropriate.
+* [x] Create the entities needed to store this data.
+* [x] A data.sql file has been provided with seed data. You can use this class directly or modify it to fit your models. However, the data found in the file is the seed data to use!
 * [ ] Add default Swagger Documentation
 
 Expose the following Endpoint
 
-* [ ] GET /animals/count -  that returns a JSON object list listing the animals and a count of how many zoos where they can be found. Use a custom query for this.
-* [ ] GET /zoos/zoos - returns all zoos with their phone numbers and animals
-* [ ] GET /zoos/zoo/{id} - returns all information related to a zoo based on its id
+* [x] GET /animals/count -  that returns a JSON object list listing the animals and a count of how many zoos where they can be found. Use a custom query for this.
+* [x] GET /zoos/zoos - returns all zoos with their phone numbers and animals
+* [x] GET /zoos/zoo/{id} - returns all information related to a zoo based on its id
 
 ## Stretch goals
 
