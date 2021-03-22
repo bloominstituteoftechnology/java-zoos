@@ -38,4 +38,4 @@ public class H2ServerConfiguration
     }
 }
 
-        
+
