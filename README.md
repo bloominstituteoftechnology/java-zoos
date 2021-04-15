@@ -11,7 +11,8 @@ A student that completes this project shows that they can:
 
 ## Introduction
 
-This is a basic database scheme with zoos, animals, and telephones for the zoos. This Java Spring REST API application will provide endpoints for clients to read various data sets contained in the application's data.
+This is a basic database scheme with zoos, animals, and telephones for the zoos. This Java Spring REST API application will provide endpoints for
+clients to read various data sets contained in the application's data.
 
 ### Database layout
 
@@ -20,35 +21,39 @@ You are creating a Java Spring REST API server that stores data in an H2 databas
 ![Zoo Database Layout](zoodb_mvp.png)
 
 * All tables contain the following auditing fields
-  * `createdby` - user name who created the row. Should default to **SYSTEM**
-  * `createddate` - date field when the row was created
-  * `lastmodifiedby` - user name who last changed data in the row. Should default to **SYSTEM**
-  * `lastmodifieddate` - date field when the data in the row was last changed
+    * `createdby` - user name who created the row. Should default to **SYSTEM**
+    * `createddate` - date field when the row was created
+    * `lastmodifiedby` - user name who last changed data in the row. Should default to **SYSTEM**
+    * `lastmodifieddate` - date field when the data in the row was last changed
 
 * Zoo
-  * `zooid` - long primary key
-  * `zooname` - String Name of the Zoo
+    * `zooid` - long primary key
+    * `zooname` - String Name of the Zoo
 
 * Telephone
-  * `phoneid` - long primary key
-  * `phonetype` - String - something like MAIN, EDUCATION, MEMBERSHIP, FAX, OPERATOR, OTHER
-  * `phonenumber` - String - a telephone number in any format
-  * `zooid` - foreign key to the Zoo table indicating the zoo who holds this telephone number
-  
-There is a one to many relationship between zoos and telephones. One zoo can have multiple phone numbers but each phone number can only belong to one zoo.
+    * `phoneid` - long primary key
+    * `phonetype` - String - something like MAIN, EDUCATION, MEMBERSHIP, FAX, OPERATOR, OTHER
+    * `phonenumber` - String - a telephone number in any format
+    * `zooid` - foreign key to the Zoo table indicating the zoo who holds this telephone number
+
+There is a one to many relationship between zoos and telephones. One zoo can have multiple phone numbers but each phone number can only belong to one
+zoo.
 
 * Animal
-  * `animalid` - long primary key
-  * `animaltype` - String - the type of animal such as lion or llama
+    * `animalid` - long primary key
+    * `animaltype` - String - the type of animal such as lion or llama
 
-Zooaminals represents is a many to many relationship between zoos and animals. A zoo may have many animal types and an animal type may be at many zoos.
+Zooaminals represents is a many to many relationship between zoos and animals. A zoo may have many animal types and an animal type may be at many
+zoos.
 
 * Zooanimals
-  * `zooid` - long foreign key to zoo
-  * `animalid` - long foreign key to animal
-  * `incomingzoo` - String - the name of the zoo when the animal came from. The field can be left blank or null if the animal does not come from another zoo.
+    * `zooid` - long foreign key to zoo
+    * `animalid` - long foreign key to animal
+    * `incomingzoo` - String - the name of the zoo when the animal came from. The field can be left blank or null if the animal does not come from
+      another zoo.
 
-Using the provided seed data, a successful application will return the follow data based on the given endpoint. Expand the section of the endpoint to see the data that is returned.
+Using the provided seed data, a successful application will return the follow data based on the given endpoint. Expand the section of the endpoint to
+see the data that is returned.
 
 ### MVP
 
@@ -417,20 +422,24 @@ Status OK
 
 ## Instructions
 
-* [ ] Please fork and clone this repository. This repository does not have a starter project, so create one inside of the cloned repository folder. Regularly commit and push your code as appropriate.
+* [ ] Please fork and clone this repository. This repository does not have a starter project, so create one inside of the cloned repository folder.
+  Regularly commit and push your code as appropriate.
 * [ ] Create the entities needed to store this data.
-* [ ] A data.sql file has been provided with seed data. You can use this class directly or modify it to fit your models. However, the data found in the file is the seed data to use!
+* [ ] A data.sql file has been provided with seed data. You can use this class directly or modify it to fit your models. However, the data found in
+  the file is the seed data to use!
 * [ ] Add default Swagger Documentation
 
 Expose the following Endpoint
 
-* [ ] GET /animals/count -  that returns a JSON object list listing the animals and a count of how many zoos where they can be found. Use a custom query for this.
+* [ ] GET /animals/count - that returns a JSON object list listing the animals and a count of how many zoos where they can be found. Use a custom
+  query for this.
 * [ ] GET /zoos/zoos - returns all zoos with their phone numbers and animals
 * [ ] GET /zoos/zoo/{id} - returns all information related to a zoo based on its id
 
 ## Stretch goals
 
-* [ ] POST /zoos/zoo - adds a zoo including new telephone number and zoo animal combinations. The Animal Type must already exist.  * In the header return as the location of the newly created zoo POST /zoos/zoo/{id}
+* [ ] POST /zoos/zoo - adds a zoo including new telephone number and zoo animal combinations. The Animal Type must already exist. * In the header
+  return as the location of the newly created zoo POST /zoos/zoo/{id}
 * [ ] PUT /zoos/zoo/{id} - Completely replace the zoo record and all accompany records based off of the given zoo id.
 * [ ] PATCH /zoos/zoo/{id} - Updates the zoo with new information. Only the new data is to be sent from the frontend client.
 * [ ] DELETE /zoos/zoo/{id} - delete the zoo, associated phone numbers, and zoo animals combination associated with this zoo id
