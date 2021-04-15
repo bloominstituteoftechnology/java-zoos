@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 @Table(name = "zooanimals")
@@ -52,5 +53,29 @@ public class ZooAnimal extends Auditable implements Serializable
     public void setAnimal(Animal animal)
     {
         this.animal = animal;
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o)
+        {
+            return true;
+        }
+        if (!(o instanceof ZooAnimal))
+        {
+            return false;
+        }
+
+        ZooAnimal that = (ZooAnimal) o;
+        return ((zoo == null) ? 0 : zoo.getZooid()) == ((that.zoo == null) ? 0 : that.zoo.getZooid()) &&
+            ((animal == null) ? 0 : animal.getAnimalid()) == ((that.animal == null) ? 0 : that.animal.getAnimalid());
+
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return 37;
     }
 }
