@@ -10,12 +10,14 @@ import java.util.Set;
 
 @Entity
 @Table(name = "zoos")
-public class Zoo extends Auditable{
+public class Zoo extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long zooid;
 
     private String zooname;
+
+
 
 
     @OneToMany(mappedBy = "zoo",
@@ -30,12 +32,12 @@ public class Zoo extends Auditable{
     @JsonIgnoreProperties(value = "zoo", allowSetters = true)
     private Set<ZooAnimals> animals = new HashSet<>();
 
-
     public Zoo() {
     }
 
-    public Zoo(String zooname) {
+    public Zoo(String zooname ) {
         this.zooname = zooname;
+
     }
 
     public long getZooid() {
@@ -44,7 +46,6 @@ public class Zoo extends Auditable{
 
     public void setZooid(long zooid) {
         this.zooid = zooid;
-
     }
 
     public String getZooname() {
@@ -54,6 +55,8 @@ public class Zoo extends Auditable{
     public void setZooname(String zooname) {
         this.zooname = zooname;
     }
+
+
 
     public List<Telephone> getTelephones() {
         return telephones;
@@ -67,7 +70,7 @@ public class Zoo extends Auditable{
         return animals;
     }
 
-    public void setUsers(Set<ZooAnimals> animals) {
-        this.animals = animals;
+    public void setAnimals(Set<ZooAnimals> animal) {
+        this.animals = animal;
     }
 }

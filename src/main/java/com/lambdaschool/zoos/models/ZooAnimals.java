@@ -32,7 +32,11 @@ public class ZooAnimals extends Auditable implements Serializable {
         this.animal = animal;
     }
 
-
+    public ZooAnimals(Zoo zoo, Animal animal) {
+        this.zoo = zoo;
+        this.animal = animal;
+        this.incomingzoo = null;
+    }
 
     public String getIncomingzoo() {
         return incomingzoo;

@@ -15,18 +15,18 @@ public class Animal extends Auditable{
     private long animalid;
 
     private String animaltype;
-    @OneToMany(mappedBy = "animals",
+
+    @OneToMany(mappedBy = "animal",
             cascade = CascadeType.ALL,
             orphanRemoval = true)
-    @JsonIgnoreProperties(value = "animals")
+    @JsonIgnoreProperties(value = "animal")
     private List<ZooAnimals> zooanimals = new ArrayList<>();
 
 
     public Animal() {
     }
 
-    public Animal(long animalid, String animaltype) {
-        this.animalid = animalid;
+    public Animal( String animaltype) {
         this.animaltype = animaltype;
     }
 
@@ -38,19 +38,19 @@ public class Animal extends Auditable{
         this.animaltype = animaltype;
     }
 
-    public long getAnimalid() {
-        return animalid;
-    }
-
-    public void setAnimalid(long animalid) {
-        this.animalid = animalid;
-    }
-
     public List<ZooAnimals> getZooanimals() {
         return zooanimals;
     }
 
     public void setZooanimals(List<ZooAnimals> zooanimals) {
         this.zooanimals = zooanimals;
+    }
+
+    public long getAnimalid() {
+        return animalid;
+    }
+
+    public void setAnimalid(long animalid) {
+        this.animalid = animalid;
     }
 }
