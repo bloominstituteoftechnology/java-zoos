@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/animals")
 public class AnimalController {
 
-   @Autowired
-   private AnimalServices animalServices;
-
-
-    @GetMapping(value = "/count", produces = "application/json")
-    public ResponseEntity<?> getAnimalCount(){
-        return new ResponseEntity<>(animalServices.getAnimalCount(), HttpStatus.OK);
-    }
+//   @Autowired
+//   private AnimalServices animalServices;
+//
+//
+//    @GetMapping(value = "/count", produces = "application/json")
+//    public ResponseEntity<?> getAnimalCount(){
+//        return new ResponseEntity<>(animalServices.getAnimalCount(), HttpStatus.OK);
+//    }
 
 }
