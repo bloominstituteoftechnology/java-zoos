@@ -11,13 +11,6 @@ public interface AnimalRepository extends CrudRepository<Animal,Long> {
 
 
 
-    @Query(value = "SELECT r.name as name, count(menuid) as countmenus " +
-            "FROM restaurants r LEFT JOIN menus m " +
-            "ON r.restaurantid = m.restaurantid " +
-            "GROUP BY r.name " +
-            "ORDER BY countmenus desc",
-            nativeQuery = true)
-    List<AnimalCounts> getCountAnimals();
 
 
 

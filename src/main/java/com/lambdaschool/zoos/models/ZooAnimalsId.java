@@ -5,49 +5,40 @@ import java.io.Serializable;
 
 @Embeddable
 public class ZooAnimalsId implements Serializable {
-
     private long zoo;
-
     private long animal;
 
-    public ZooAnimalsId() {
-    }
 
-    public ZooAnimalsId(long zoo, long animal) {
-        this.zoo = zoo;
-        this.animal = animal;
+    public ZooAnimalsId() {
     }
 
     public long getZoo() {
         return zoo;
     }
 
-    public void setZoo(long zoo) {
-        this.zoo = zoo;
+    public void setZoo(long zooid) {
+        this.zoo = zooid;
     }
 
     public long getAnimal() {
         return animal;
     }
 
-    public void setAnimal(long animal) {
-        this.animal = animal;
+    public void setAnimal(long animalid) {
+        this.animal = animalid;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o){
-            return true;
-        }
-        if (! (o instanceof ZooAnimalsId)){
-            return false;
-        }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         ZooAnimalsId that = (ZooAnimalsId) o;
-        return (this.zoo == that.zoo) && (this.animal == that.animal);
+        return zoo == that.zoo &&
+                animal == that.animal;
     }
 
     @Override
     public int hashCode() {
-        return 37;
+        return 42;
     }
 }

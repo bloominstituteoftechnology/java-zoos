@@ -15,17 +15,17 @@ import java.util.Date;
 
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-public abstract class Auditable {
-
-
-
+abstract class Auditable {
         @CreatedBy
         protected String createdby;
+
         @CreatedDate
         @Temporal(TemporalType.TIMESTAMP)
         protected Date createddate;
+
         @LastModifiedBy
         protected String lastmodifiedby;
+
         @LastModifiedDate
         @Temporal(TemporalType.TIMESTAMP)
         protected Date lastmodifieddate;

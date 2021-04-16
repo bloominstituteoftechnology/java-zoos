@@ -2,7 +2,9 @@ package com.lambdaschool.zoos.views;
 
 public interface AnimalCounts {
 
-    String getName();
+    long getAnimalid();
 
-    int getCountAnimals();
+    String getAnimalType();
+
+    int getCountZoos();
 }

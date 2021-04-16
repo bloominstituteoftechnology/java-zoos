@@ -6,27 +6,32 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "telephones")
-public class Telephone {
+public class Telephone extends Auditable
+{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long phoneid;
 
-    private String phonenumber;
-
+    @Column(nullable = false)
     private String phonetype;
 
+    @Column(nullable = false)
+    private String phoneNumber;
+
+
     @ManyToOne
-    @JoinColumn(name = "zooid")
-    @JsonIgnoreProperties(value = "telephones",
-            allowSetters = true)
+    @JoinColumn(name = "zooid" , nullable = false)
+    @JsonIgnoreProperties(value = "telephones", allowSetters = true)
     private Zoo zoo;
 
-    public Telephone() {
+    public Telephone()
+    {
     }
 
-    public Telephone(String phonenumber, String phonetype, Zoo zoo) {
-        this.phonenumber = phonenumber;
+    public Telephone(String phonetype, String phoneNumber, Zoo zoo)
+    {
         this.phonetype = phonetype;
+        this.phoneNumber = phoneNumber;
         this.zoo = zoo;
     }
 
@@ -38,20 +43,20 @@ public class Telephone {
         this.phoneid = phoneid;
     }
 
-    public String getPhonenumber() {
-        return phonenumber;
-    }
-
-    public void setPhonenumber(String phonenumber) {
-        this.phonenumber = phonenumber;
-    }
-
     public String getPhonetype() {
         return phonetype;
     }
 
     public void setPhonetype(String phonetype) {
         this.phonetype = phonetype;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public Zoo getZoo() {
@@ -62,3 +67,4 @@ public class Telephone {
         this.zoo = zoo;
     }
 }
+
