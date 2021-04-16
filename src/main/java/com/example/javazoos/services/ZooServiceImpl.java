@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Transactional
@@ -16,14 +18,18 @@ public class ZooServiceImpl implements ZooService
     private ZoosRepository zoosRepository;
 
     @Override
-    public List<Zoo> findAllZoos()
+    public List<Zoo> findAll()
     {
-        return null;
+        List<Zoo> rtnList = new ArrayList<>();
+        zoosRepository.findAll()
+                      .iterator()
+                      .forEachRemaining(rtnList::add);
+        return rtnList;
     }
 
     @Override
     public Zoo findByZooId(long zooid)
     {
-        return null;
+        return zoosRepository.findById(zooid).orElseThrow(()-> new EntityNotFoundException("Zoo id " + zooid + " Not Found"));
     }
 }

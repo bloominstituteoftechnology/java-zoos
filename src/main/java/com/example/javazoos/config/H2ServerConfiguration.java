@@ -1,4 +1,4 @@
-package com.lambdaschool.usermodel.config;
+package com.example.javazoos.config;
 
 import org.h2.tools.Server;
 import org.springframework.beans.factory.annotation.Value;

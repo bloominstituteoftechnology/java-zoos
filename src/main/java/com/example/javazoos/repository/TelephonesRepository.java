@@ -1,5 +1,8 @@
 package com.example.javazoos.repository;
 
-public interface TelephonesRepository
+import com.example.javazoos.models.Telephone;
+import org.springframework.data.repository.CrudRepository;
+
+public interface TelephonesRepository extends CrudRepository<Telephone, Long>
 {
 }

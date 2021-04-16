@@ -1,4 +1,4 @@
-package com.lambdaschool.usermodel.config;
+package com.example.javazoos.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -32,7 +32,7 @@ public class Swagger2Config
         return new Docket(DocumentationType.SWAGGER_2)
             .select()
             .apis(RequestHandlerSelectors
-                .basePackage("com.lambdaschool.usermodel"))
+                .basePackage("com.example.javazoos"))
             .paths(PathSelectors.regex("/.*"))
             .build()
             .apiInfo(apiEndPointsInfo());
