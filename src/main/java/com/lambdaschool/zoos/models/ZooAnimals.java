@@ -4,12 +4,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Objects;
 
 @Entity
 @Table(name = "zooanimals")
-@IdClass(ZooAnimalId.class)
-public class ZooAnimal extends Auditable implements Serializable {
+@IdClass(ZooAnimalsId.class)
+public class ZooAnimals extends Auditable implements Serializable {
 
    private String incomingzoo;
 
@@ -24,19 +23,16 @@ public class ZooAnimal extends Auditable implements Serializable {
     @JsonIgnoreProperties(value = "zoos", allowSetters = true)
     private Animal animal;
 
-    public ZooAnimal() {
+    public ZooAnimals() {
     }
 
-    public ZooAnimal(String incomingzoo, Zoo zoo, Animal animal) {
+    public ZooAnimals(String incomingzoo, Zoo zoo, Animal animal) {
         this.incomingzoo = incomingzoo;
         this.zoo = zoo;
         this.animal = animal;
     }
 
-    public ZooAnimal(Zoo zoo, Animal animal) {
-        this.zoo = zoo;
-        this.animal = animal;
-    }
+
 
     public String getIncomingzoo() {
         return incomingzoo;
@@ -67,10 +63,10 @@ public class ZooAnimal extends Auditable implements Serializable {
         if (this == o){
             return true;
         }
-        if (!(o instanceof ZooAnimal )){
+        if (!(o instanceof ZooAnimals)){
             return false;
         }
-        ZooAnimal that = (ZooAnimal) o;
+        ZooAnimals that = (ZooAnimals) o;
         return ((this.zoo == null)? 0 :this.zoo.getZooid()) ==((that.zoo == null) ? 0 : that.zoo.getZooid()) &&
                 ((this.animal ==null)? 0 : this.animal.getAnimalid()) == ((that.animal == null)? 0 : that.animal.getAnimalid());
 }       @Override

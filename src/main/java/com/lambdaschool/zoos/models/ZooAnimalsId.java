@@ -2,19 +2,18 @@ package com.lambdaschool.zoos.models;
 
 import javax.persistence.Embeddable;
 import java.io.Serializable;
-import java.util.Objects;
 
 @Embeddable
-public class ZooAnimalId implements Serializable {
+public class ZooAnimalsId implements Serializable {
 
     private long zoo;
 
     private long animal;
 
-    public ZooAnimalId() {
+    public ZooAnimalsId() {
     }
 
-    public ZooAnimalId(long zoo, long animal) {
+    public ZooAnimalsId(long zoo, long animal) {
         this.zoo = zoo;
         this.animal = animal;
     }
@@ -40,10 +39,10 @@ public class ZooAnimalId implements Serializable {
         if (this == o){
             return true;
         }
-        if (! (o instanceof ZooAnimalId )){
+        if (! (o instanceof ZooAnimalsId)){
             return false;
         }
-        ZooAnimalId that = (ZooAnimalId) o;
+        ZooAnimalsId that = (ZooAnimalsId) o;
         return (this.zoo == that.zoo) && (this.animal == that.animal);
     }
 
