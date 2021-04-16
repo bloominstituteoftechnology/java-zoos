@@ -42,6 +42,9 @@ public class Telephone {
     this.zoo = zoo;
   }
 
+  public Telephone(
+      String phonenumber) {}
+
   public long getPhoneid() {
     return phoneid;
   }
@@ -73,4 +76,6 @@ public class Telephone {
   public void setZoo(Zoo zoo) {
     this.zoo = zoo;
   }
+
+
 }

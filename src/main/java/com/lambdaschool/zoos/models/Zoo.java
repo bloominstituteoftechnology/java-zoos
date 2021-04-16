@@ -18,6 +18,8 @@ public class Zoo {
       orphanRemoval = true)
   @JsonIgnoreProperties(value = "zoo", allowSetters = true)
   private List<Telephone> telephones = new ArrayList<>();
+
+  @Column(nullable = false, unique = true)
   String zooname;
 
   @OneToMany(mappedBy = "zoo",
@@ -65,4 +67,5 @@ public class Zoo {
   public void setAnimals(Set<ZooAnimals> animals) {
     this.animals = animals;
   }
+
 }

@@ -1,14 +1,13 @@
 package com.lambdaschool.zoos.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
-import java.util.Objects;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "zooanimals")
-//@IdClass(ZooAnimalsId.class)
-public class ZooAnimals {
+@IdClass(ZooAnimalsId.class)
+public class ZooAnimals extends Auditable implements Serializable {
 
   @Id
   @ManyToOne
@@ -61,10 +60,12 @@ public class ZooAnimals {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) { return true; }
+    if (this == o)
+    { return true; }
     if (!(o instanceof ZooAnimals)) {
       return false;
     }
+
     ZooAnimals that = (ZooAnimals) o;
     return ((this.zoo == null) ? 0 : this.zoo.getZooid()) ==
     ((that.zoo == null) ? 0 : that.zoo.getZooid()) &&
@@ -76,4 +77,5 @@ public class ZooAnimals {
   public int hashCode() {
     return 50;
   }
+
 }

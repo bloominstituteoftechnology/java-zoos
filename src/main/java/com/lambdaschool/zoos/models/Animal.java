@@ -14,7 +14,7 @@ public class Animal extends Auditable{
   @GeneratedValue(strategy = GenerationType.AUTO)
   private long animalid;
 
-  @Column(nullable = false)
+  @Column(nullable = false, unique = true)
   private String animaltype;
 
   @OneToMany(mappedBy = "animal",
@@ -54,4 +54,5 @@ public class Animal extends Auditable{
   public void setAnimals(Set<ZooAnimals> animals) {
     this.animals = animals;
   }
+
 }
