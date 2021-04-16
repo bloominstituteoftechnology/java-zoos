@@ -1,5 +1,6 @@
 package com.example.javazoos.services;
 
+import com.example.javazoos.Views.AnimalCounts;
 import com.example.javazoos.models.Animal;
 import com.example.javazoos.repository.AnimalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +16,11 @@ public class AnimalServiceImpl implements AnimalService
     @Autowired
     private AnimalRepository animalRepository;
 
+
     @Override
-    public List<Animal> FindAllAnimalsAndCounts()
+    public List<AnimalCounts> getAllAnimalsAndCounts()
     {
-        return null;
+        List<AnimalCounts> rtnList = animalRepository.FindAllAnimalsAndCounts();
+        return rtnList;
     }
 }

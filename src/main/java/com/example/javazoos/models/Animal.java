@@ -20,8 +20,8 @@ public class Animal extends Auditable
     @OneToMany(mappedBy = "animal",
         cascade = CascadeType.ALL,
         orphanRemoval = true)
-    @JsonIgnoreProperties(value = "animals", allowSetters = true)
-    private Set<ZooAnimal> animals = new HashSet<>();
+    @JsonIgnoreProperties(value = "animal", allowSetters = true)
+    private Set<ZooAnimal> zoos = new HashSet<>();
 
     public Animal()
     {
@@ -52,13 +52,13 @@ public class Animal extends Auditable
         this.animaltype = animaltype;
     }
 
-    public Set<ZooAnimal> getAnimals()
+    public Set<ZooAnimal> getZoos()
     {
-        return animals;
+        return zoos;
     }
 
-    public void setAnimals(Set<ZooAnimal> animals)
+    public void setZoos(Set<ZooAnimal> animals)
     {
-        this.animals = animals;
+        this.zoos = animals;
     }
 }

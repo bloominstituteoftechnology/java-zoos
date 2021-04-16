@@ -1,5 +1,6 @@
 package com.example.javazoos.controllers;
 
+import com.example.javazoos.Views.AnimalCounts;
 import com.example.javazoos.models.Animal;
 import com.example.javazoos.services.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +20,9 @@ public class AnimalController
 
 //    http://localhost:2019/animals/count
     @RequestMapping(value = "/count", produces = "application/json")
-    public ResponseEntity<?> listAllAnimalCounts()
+    public ResponseEntity<?> getAllAnimalsAndCounts()
     {
-        List<Animal> rtnList = animalService.FindAllAnimalsAndCounts();
+        List<AnimalCounts> rtnList = animalService.getAllAnimalsAndCounts();
         return new ResponseEntity<>(rtnList, HttpStatus.OK);
     }
 
