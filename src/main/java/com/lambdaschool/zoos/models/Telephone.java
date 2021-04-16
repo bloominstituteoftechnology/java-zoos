@@ -10,15 +10,15 @@ import java.util.List;
 
 @Entity
 @Table(name = "telephones")
-public class Telephone {
+public class Telephone extends Auditable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private long phoneid;
 
   @Column(nullable = false)
-  @Size(min = 10,max = 10, message = "Invalid length for telephone number")
-  @Pattern(message = "Invalid telephone pattern. Use 123456789", regexp = "(^$|[0-9]{10})")
+//  @Size(min = 12,max = 12, message = "Invalid length for telephone number")
+//  @Pattern(message = "Invalid telephone pattern. Use 123456789", regexp = "(^$|[0-9]{10})")
   private String phonenumber;
 
   @Column(nullable = false)

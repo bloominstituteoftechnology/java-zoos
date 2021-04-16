@@ -7,7 +7,7 @@ import java.util.*;
 
 @Entity
 @Table(name = "zoos")
-public class Zoo {
+public class Zoo extends Auditable{
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,7 +19,7 @@ public class Zoo {
   @JsonIgnoreProperties(value = "zoo", allowSetters = true)
   private List<Telephone> telephones = new ArrayList<>();
 
-  @Column(nullable = false, unique = true)
+//  @Column(nullable = false, unique = true)
   String zooname;
 
   @OneToMany(mappedBy = "zoo",

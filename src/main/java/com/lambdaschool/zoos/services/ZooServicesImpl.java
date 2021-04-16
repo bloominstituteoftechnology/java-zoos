@@ -7,8 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.Access;
-import javax.persistence.EntityNotFoundException;
+import javax.persistence.*;
 import java.util.*;
 
 @Transactional
@@ -20,6 +19,9 @@ public class ZooServicesImpl implements ZooServices{
 
   @Autowired
   private AnimalServices animalServices;
+
+  @Autowired
+  private ZooAuditing zooAuditing;
 
   @Override
   public List<Zoo> findAll() {
@@ -34,6 +36,7 @@ public class ZooServicesImpl implements ZooServices{
         new EntityNotFoundException("Zoo id: " + id + " not found!"));
   }
 
+  @Transactional
   @Override
   public Zoo save(Zoo zoo) {
     Zoo newZoo = new Zoo();
@@ -58,6 +61,31 @@ public class ZooServicesImpl implements ZooServices{
     return zoorepos.save(newZoo);
   }
 
+
+
+//  @Override
+//  public Zoo save(Zoo zoo) {
+//    if (zoo.getAnimals().size() > 0) {
+//      throw new EntityExistsException("Zoo Animals are not updated through Zoo");
+//    }
+//    return zoorepos.save(zoo);
+//  }
+
+  @Transactional
+  @Override
+  public void delete(long id) {
+  zoorepos.findById(id).orElseThrow(()->
+      new EntityNotFoundException("Zoo id: " + id + " not found!"));
+  zoorepos.deleteById(id);
+  }
+
+//  @Override
+//  public Zoo update(Zoo zoo, long id) {
+//    zoorepos.updateZooName(zooAuditing.getCurrentAuditor().get(),
+//                           id, zoo.getZooname());
+//    return null;
+//  }
+
   @Transactional
   @Override
   public Zoo update(Zoo zoo, long id) {
@@ -80,14 +108,9 @@ public class ZooServicesImpl implements ZooServices{
         currentZoo.getTelephones().add(new Telephone(t.getPhonenumber(), t.getPhonetype(), currentZoo));
       }
     }
-    return zoorepos.save(currentZoo);
-  }
 
-  @Transactional
-  @Override
-  public void delete(long id) {
-  zoorepos.findById(id).orElseThrow(()->
-      new EntityNotFoundException("Zoo id: " + id + " not found!"));
-  zoorepos.deleteById(id);
+    zoorepos.updateZooName(zooAuditing.getCurrentAuditor().get(),
+                               id, zoo.getZooname());
+    return zoorepos.save(currentZoo);
   }
 }
