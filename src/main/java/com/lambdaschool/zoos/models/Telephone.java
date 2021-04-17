@@ -16,7 +16,7 @@ public class Telephone extends Auditable
     private String phonetype;
 
     @Column(nullable = false)
-    private String phoneNumber;
+    private String phonenumber;
 
 
     @ManyToOne
@@ -31,7 +31,7 @@ public class Telephone extends Auditable
     public Telephone(String phonetype, String phoneNumber, Zoo zoo)
     {
         this.phonetype = phonetype;
-        this.phoneNumber = phoneNumber;
+        this.phonenumber = phonenumber;
         this.zoo = zoo;
     }
 
@@ -52,11 +52,11 @@ public class Telephone extends Auditable
     }
 
     public String getPhoneNumber() {
-        return phoneNumber;
+        return phonenumber;
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+        this.phonenumber = phonenumber;
     }
 
     public Zoo getZoo() {
